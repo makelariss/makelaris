@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="makelaris">
+	<title>SSRF</title>
+	<link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<div class="alerts">{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category, message in messages %}{% if category == 'message' %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">{% else %}
+		<div class="alert alert-{{ category }}" role="alert">{% endif %}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<strong>{{ message }}</strong>
+		</div>
+	</div>{% endfor %}{% endif %}{% endwith %}
+</div>
+	<div class="jumbotron jumbotron-fluid" align='center'>
+		<img src="//68.media.tumblr.com/ccb85e5d4d26217eaeb321fc29977d43/tumblr_o4erp0hrJ41u8eo0po1_500.gif" height="160px">
+		<div class="container">
+			<h1 class="display-2">CachedView</h1>
+			<p>Cache your favourite URLs</p>
+		</div>
+	</div>
+	<main role="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4"></div>
+				<form class="form-inline" action="/" class="col-md-4" method="POST">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="describeUrl">URL</span>
+						</div>
+						<input type="text" class="form-control" name="url" aria-describedby="describeUrl" placeholder="https://www.google.com">
+					</div>
+					<button type="submit" class="btn btn-primary mb-0">Submit</button>
+				</form>
+			</div>
+		</div>
+		{% if cached and screenshot %}
+		<div class="screenshot">
+			<h2>Screenshot for <a href="{{ url }}" target="_blank">{{ domain }}</a></h2>
+			<img src="{{ screenshot }}" class="layout">	
+  		</div>
+  		{% endif %}
+	</main>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+<!-- /debug -->
+</html>

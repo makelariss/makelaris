@@ -1,0 +1,43 @@
+@import url(//fonts.googleapis.com/css?family=Jua&display=swap);
+
+body {
+	font-family: 'Jua', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+div.alert {
+	margin-bottom: 0px;
+}
+
+.jumbotron {
+	margin-top: 0px;
+	margin-bottom: 1rem;
+}
+
+@media (min-width: 576px) {
+	.jumbotron {
+		padding: 1rem 1rem;
+	}
+}
+
+@keyframes imgAnimation {
+	from {
+		top: 300px;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+div.screenshot {
+	position: relative; 
+	text-align: center; 
+	margin-top: 40px;
+	margin-bottom: 80px;
+	animation: imgAmination .5s ease-in;
+}
+
+img.layout {
+	box-shadow: 5px 5px 10px #888888;
+}
